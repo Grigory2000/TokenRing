@@ -79,19 +79,19 @@ public class TokenRing {
             allTime += time;
         }
 
-        return allTime / executionTimeList.size();
+        return allTime / (1000000*executionTimeList.size());
     }
 
     public void start() {
-        for (int i = 0; i <= nodeNumber; i++) {
-            nodeList.get(i).start();
-        }
-        while (Thread.activeCount() != 2) {
-        }
-        logger.info("Average latency: " + averageTime(executionTimeList) + " millis");
+            for (int i = 0; i <= nodeNumber; i++) {
+                nodeList.get(i).start();
+            }
+            while (Thread.activeCount() != 2) {
+            }
+            logger.info( "Average latency: " + averageTime(executionTimeList) + " millis");
 
-        logger.info("Average delivery latency: " + averageTime(deliveryTimeList) + " millis");
+            logger.info("Average delivery latency: " + averageTime(deliveryTimeList) + " millis");
 
-        logger.info("Throughput: " + dataCount);
+            logger.info("Throughput: " + dataCount);
     }
 }
